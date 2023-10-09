@@ -1,7 +1,5 @@
 ## Environment normalization:
-/.bundle/
-/vendor/bundle
-/lib/bundler/man/
+/.bundle
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -31,5 +29,3 @@
 # ignore Terraform cache
 /terraform/**/.terraform/*
 /terraform/**/.terraform.lock.hcl
-
-Gemfile.lock
