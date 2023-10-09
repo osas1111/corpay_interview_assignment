@@ -1,2 +1,4 @@
 Exclude Terraform deployment configuration files from build
 /terraform/*
+
+Gemfile.lock

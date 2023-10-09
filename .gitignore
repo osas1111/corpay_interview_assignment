@@ -31,3 +31,5 @@
 # ignore Terraform cache
 /terraform/**/.terraform/*
 /terraform/**/.terraform.lock.hcl
+
+Gemfile.lock
