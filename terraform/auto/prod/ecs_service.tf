@@ -41,10 +41,6 @@ module "ecs_service" {
           value = var.rails_master_key
         },
         {
-          name = "RAILS_LOG_TO_STDOUT"
-          value = "true"
-        },
-        {
           name = "DB_USER"
           value = var.db_user
         },
