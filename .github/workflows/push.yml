@@ -52,9 +52,9 @@ jobs:
         run: terraform apply -auto-approve
         working-directory: terraform/auto/dev
         env:
-          TF_VAR_rails_env: env.RAILS_ENV
-          TF_VAR_db_user: env.DB_USER
-          TF_VAR_db_password: env.DB_PASSWORD
-          TF_VAR_db_port: env.DB_PORT
-          TF_VAR_db_host: env.DB_HOST
-          TF_VAR_db_name: env.DB_NAME
+          TF_VAR_rails_env: ${{ env.RAILS_ENV }}
+          TF_VAR_db_user: ${{ env.DB_USER }}
+          TF_VAR_db_password: ${{ env.DB_PASSWORD }}
+          TF_VAR_db_port: ${{ env.DB_PORT }}
+          TF_VAR_db_host: ${{ env.DB_HOST }}
+          TF_VAR_db_name: ${{ env.DB_NAME }}
