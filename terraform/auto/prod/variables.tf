@@ -33,6 +33,11 @@ variable "rails_env" {
   default = null
 }
 
+variable "rails_master_key" {
+  type    = string
+  default = null
+}
+
 variable "db_user" {
   type      = string
   sensitive = true

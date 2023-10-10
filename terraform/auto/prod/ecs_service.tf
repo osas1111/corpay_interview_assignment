@@ -38,6 +38,10 @@ module "ecs_service" {
           value = var.rails_env
         },
         {
+          name = "RAILS_MASTER_KEY"
+          value = var.rails_master_key
+        },
+        {
           name = "DB_USER"
           value = var.db_user
         },
