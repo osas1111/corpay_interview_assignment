@@ -45,8 +45,11 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ~1.5.0
+      - name: Initialize Terraform
+        run: terraform init
+        working-directory: terraform/auto/dev
       - name: Deploy service to non-prod environment
-        run: terraform -auto-approve
+        run: terraform apply -auto-approve
         working-directory: terraform/auto/dev
         env:
           TF_VAR_rails_env: env.RAILS_ENV
