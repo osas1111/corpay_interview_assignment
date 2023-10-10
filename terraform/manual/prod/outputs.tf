@@ -17,3 +17,8 @@ output "ecs_cluster_arn" {
   description = "ECS cluster ARN"
   value       = try(module.ecs_cluster.arn, "")
 }
+
+output "ecr_repository_name" {
+  description = "ECR repository name"
+  value       = try(module.ecr.repository_url, "")
+}
