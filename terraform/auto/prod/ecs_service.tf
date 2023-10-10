@@ -11,7 +11,6 @@ module "ecs_service" {
   load_balancer = {
     "0" = {
       target_group_arn = module.alb.target_group_arns[0]
-      #elb_name         = module.alb.lb_dns_name
       container_name   = local.container_name
       container_port   = var.container_port
     }
@@ -82,6 +81,13 @@ module "ecs_service" {
       to_port     = 0
       type        = "egress"
       cidr_blocks = ["0.0.0.0/0"]
+    },
+    "alb_ingress" = {
+      protocol                 = "tcp"
+      from_port                = 3000
+      to_port                  = 3000
+      type                     = "ingress"
+      source_security_group_id = module.alb_sg.security_group_id
     }
   }
 
