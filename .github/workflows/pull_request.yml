@@ -5,15 +5,15 @@ on:
       - main
 
 env:
-  REPOSITORY: secrets.PROD_ECR_REPO
+  REPOSITORY: ${{ secrets.PROD_ECR_REPO }}
   IMAGE_TAG: latest
   AWS_REGION: us-east-1
   RAILS_ENV: production
-  DB_USER: secrets.PROD_DB_USER
-  DB_PASSWORD: secrets.PROD_DB_PASSWORD
-  DB_PORT: secrets.DB_PORT
-  DB_HOST: secrets.PROD_DB_HOST
-  DB_NAME: secrets.PROD_DB_NAME
+  DB_USER: ${{ secrets.PROD_DB_USER }}
+  DB_PASSWORD: ${{ secrets.PROD_DB_PASSWORD }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_HOST: ${{ secrets.PROD_DB_HOST }}
+  DB_NAME: ${{ secrets.PROD_DB_NAME }}
 
 jobs:
   pipeline:

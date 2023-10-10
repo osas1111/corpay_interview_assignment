@@ -6,15 +6,15 @@ on:
       - '!main'
 
 env:
-  REPOSITORY: secrets.DEV_ECR_REPO
+  REPOSITORY: ${{ secrets.DEV_ECR_REPO }}
   IMAGE_TAG: latest
   AWS_REGION: us-east-1
   RAILS_ENV: development
-  DB_USER: secrets.DEV_DB_USER
-  DB_PASSWORD: secrets.DEV_DB_PASSWORD
-  DB_PORT: secrets.DB_PORT
-  DB_HOST: secrets.DEV_DB_HOST
-  DB_NAME: secrets.DEV_DB_NAME
+  DB_USER: ${{ secrets.DEV_DB_USER }}
+  DB_PASSWORD: ${{ secrets.DEV_DB_PASSWORD }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_HOST: ${{ secrets.DEV_DB_HOST }}
+  DB_NAME: ${{ secrets.DEV_DB_NAME }}
 
 jobs:
   pipeline:
