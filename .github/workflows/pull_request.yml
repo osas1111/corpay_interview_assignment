@@ -1,24 +1,23 @@
 name: Push
 on:
-  push:
+  pull_request:
     branches:
-      - '*'
-      - '!main'
+      - main
 
 env:
-  REPOSITORY: vars.DEV_ECR_REPO
+  REPOSITORY: vars.PROD_ECR_REPO
   IMAGE_TAG: latest
   AWS_REGION: us-east-1
-  RAILS_ENV: development
-  DB_USER: secrets.DEV_DB_USER
-  DB_PASSWORD: secrets.DEV_DB_PASSWORD
-  DB_PORT: vars.DB_PORT
-  DB_HOST: vars.DEV_DB_HOST
-  DB_NAME: secrets.DEV_DB_NAME
+  RAILS_ENV: production
+  DB_USER: secrets.PROD_DB_USER
+  DB_PASSWORD: secrets.PROD_DB_PASSWORD
+  DB_PORT: vars.PROD_PORT
+  DB_HOST: vars.PROD_DB_HOST
+  DB_NAME: secrets.PROD_DB_NAME
 
 jobs:
   pipeline:
-    name: Pipeline for build, test and deploy in Non-prod env
+    name: Pipeline for build, test and deploy this service
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,7 +46,7 @@ jobs:
           terraform_version: ~1.5.0
           terraform_wrapper: false
         run: terraform -auto-approve
-        working-directory: terraform/auto/dev
+        working-directory: terraform/auto/prod
         env:
           TF_VAR_rails_env: env.RAILS_ENV
           TF_VAR_db_user: env.DB_USER
