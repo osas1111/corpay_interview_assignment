@@ -66,6 +66,7 @@ module "ecs_service" {
           value = var.db_name
         }
       ]
+      readonly_root_filesystem = false
     }
   }
 
