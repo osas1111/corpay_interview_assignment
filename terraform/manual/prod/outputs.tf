@@ -8,9 +8,9 @@ output "public_subnet_ids" {
   value       = try(module.vpc.public_subnets, [])
 }
 
-output "private_subnets_cidr_blocks" {
-  description = "List of Private Subnet CIDRs associated with the VPC"
-  value       = try(module.vpc.private_subnets_cidr_blocks, [])
+output "public_subnets_cidr_blocks" {
+  description = "List of Public Subnet CIDRs associated with the VPC"
+  value       = try(module.vpc.public_subnets_cidr_blocks, [])
 }
 
 output "ecs_cluster_arn" {

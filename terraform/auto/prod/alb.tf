@@ -45,7 +45,7 @@ module "alb_sg" {
   ingress_cidr_blocks = ["0.0.0.0/0"]
 
   egress_rules       = ["all-all"]
-  egress_cidr_blocks = local.private_subnets_cidr_blocks
+  egress_cidr_blocks = local.public_subnets_cidr_blocks
 
   tags = merge(
     var.tags,
