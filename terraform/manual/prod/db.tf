@@ -11,7 +11,7 @@ module "db" {
   backup_retention_period = 0
 
   db_name  = var.project
-  username = "user"
+  username = var.db_username
   port     = 3306
 
   create_db_option_group    = false

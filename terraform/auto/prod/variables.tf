@@ -28,6 +28,36 @@ variable "ecs_platform_version" {
   default = "1.3.0"
 }
 
+variable "rails_env" {
+  type    = string
+  default = null
+}
+
+variable "db_user" {
+  type      = string
+  sensitive = true
+}
+
+variable "db_password" {
+  type      = string
+  sensitive = true
+}
+
+variable "db_port" {
+  type    = string
+  default = 3306
+}
+
+variable "db_host" {
+  type    = string
+  default = null
+}
+
+variable "db_name" {
+  type    = string
+  default = null
+}
+
 variable "tags" {
   type    = map(string)
   default = {

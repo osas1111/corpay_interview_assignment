@@ -32,6 +32,32 @@ module "ecs_service" {
           protocol      = "tcp"
         }
       ]
+      environment = [
+        {
+          name = RAILS_ENV
+          value = var.rails_env
+        }
+        {
+          name = DB_USER
+          value = var.db_user
+        }
+        {
+          name = DB_PASSWORD
+          value = var.db_password
+        }
+        {
+          name = DB_PORT
+          value = var.db_port
+        }
+        {
+          name = DB_HOST
+          value = var.db_host
+        }
+        {
+          name = DB_NAME
+          value = var.db_name
+        }
+      ]
     }
   }
 

@@ -18,6 +18,12 @@ variable "vpc_cidr" {
   default = "100.0.0.0/16"
 }
 
+variable "db_username" {
+  description = "The username for the RDS DB master user"
+  type = string
+  default = "user"
+}
+
 variable "tags" {
   type    = map(string)
   default = {
