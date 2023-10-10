@@ -34,27 +34,27 @@ module "ecs_service" {
       ]
       environment = [
         {
-          name = RAILS_ENV
+          name = "RAILS_ENV"
           value = var.rails_env
         },
         {
-          name = DB_USER
+          name = "DB_USER"
           value = var.db_user
         },
         {
-          name = DB_PASSWORD
+          name = "DB_PASSWORD"
           value = var.db_password
         },
         {
-          name = DB_PORT
+          name = "DB_PORT"
           value = var.db_port
         },
         {
-          name = DB_HOST
+          name = "DB_HOST"
           value = var.db_host
         },
         {
-          name = DB_NAME
+          name = "DB_NAME"
           value = var.db_name
         }
       ]
