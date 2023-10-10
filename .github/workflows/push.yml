@@ -6,14 +6,14 @@ on:
       - '!main'
 
 env:
-  REPOSITORY: vars.DEV_ECR_REPO
+  REPOSITORY: secrets.DEV_ECR_REPO
   IMAGE_TAG: latest
   AWS_REGION: us-east-1
   RAILS_ENV: development
   DB_USER: secrets.DEV_DB_USER
   DB_PASSWORD: secrets.DEV_DB_PASSWORD
-  DB_PORT: vars.DB_PORT
-  DB_HOST: vars.DEV_DB_HOST
+  DB_PORT: secrets.DB_PORT
+  DB_HOST: secrets.DEV_DB_HOST
   DB_NAME: secrets.DEV_DB_NAME
 
 jobs:
@@ -45,7 +45,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ~1.5.0
-          terraform_wrapper: false
+      - name: Deploy service to non-prod environment
         run: terraform -auto-approve
         working-directory: terraform/auto/dev
         env:
