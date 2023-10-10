@@ -44,7 +44,7 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ~1.5.0
-          terraform_wrapper: false
+      - name: Deploy service to prod environment
         run: terraform -auto-approve
         working-directory: terraform/auto/prod
         env:
