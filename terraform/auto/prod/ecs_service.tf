@@ -11,7 +11,6 @@ module "ecs_service" {
   load_balancer = {
     "0" = {
       target_group_arn = module.alb.target_group_arns[0]
-      #elb_name         = module.alb.lb_dns_name
       container_name   = local.container_name
       container_port   = var.container_port
     }
@@ -34,30 +33,35 @@ module "ecs_service" {
       ]
       environment = [
         {
-          name = RAILS_ENV
+          name = "RAILS_ENV"
           value = var.rails_env
-        }
+        },
         {
-          name = DB_USER
+          name = "RAILS_MASTER_KEY"
+          value = var.rails_master_key
+        },
+        {
+          name = "DB_USER"
           value = var.db_user
-        }
+        },
         {
-          name = DB_PASSWORD
+          name = "DB_PASSWORD"
           value = var.db_password
-        }
+        },
         {
-          name = DB_PORT
+          name = "DB_PORT"
           value = var.db_port
-        }
+        },
         {
-          name = DB_HOST
+          name = "DB_HOST"
           value = var.db_host
-        }
+        },
         {
-          name = DB_NAME
+          name = "DB_NAME"
           value = var.db_name
         }
       ]
+      readonly_root_filesystem = false
     }
   }
 
@@ -73,6 +77,13 @@ module "ecs_service" {
       to_port     = 0
       type        = "egress"
       cidr_blocks = ["0.0.0.0/0"]
+    },
+    "alb_ingress" = {
+      protocol                 = "tcp"
+      from_port                = 3000
+      to_port                  = 3000
+      type                     = "ingress"
+      source_security_group_id = module.alb_sg.security_group_id
     }
   }
 

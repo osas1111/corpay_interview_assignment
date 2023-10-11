@@ -33,6 +33,11 @@ variable "rails_env" {
   default = null
 }
 
+variable "rails_master_key" {
+  type    = string
+  default = null
+}
+
 variable "db_user" {
   type      = string
   sensitive = true
@@ -62,7 +67,7 @@ variable "tags" {
   type    = map(string)
   default = {
     team                = "devops"
-    repository          = "maks_new_challenge"
+    repository          = "corpay_interview_assignment"
     terraform_managed   = "true"
   }
 }

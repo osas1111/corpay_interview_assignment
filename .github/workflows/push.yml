@@ -6,15 +6,16 @@ on:
       - '!main'
 
 env:
-  REPOSITORY: secrets.DEV_ECR_REPO
+  REPOSITORY: ${{ secrets.DEV_ECR_REPO }}
   IMAGE_TAG: latest
   AWS_REGION: us-east-1
   RAILS_ENV: development
-  DB_USER: secrets.DEV_DB_USER
-  DB_PASSWORD: secrets.DEV_DB_PASSWORD
-  DB_PORT: secrets.DB_PORT
-  DB_HOST: secrets.DEV_DB_HOST
-  DB_NAME: secrets.DEV_DB_NAME
+  RAILS_MASTER_KEY: ${{ secrets.DEV_RAILS_MASTER_KEY }}
+  DB_USER: ${{ secrets.DEV_DB_USER }}
+  DB_PASSWORD: ${{ secrets.DEV_DB_PASSWORD }}
+  DB_PORT: ${{ secrets.DB_PORT }}
+  DB_HOST: ${{ secrets.DEV_DB_HOST }}
+  DB_NAME: ${{ secrets.DEV_DB_NAME }}
 
 jobs:
   pipeline:
@@ -45,13 +46,17 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: ~1.5.0
+      - name: Initialize Terraform
+        run: terraform init
+        working-directory: terraform/auto/dev
       - name: Deploy service to non-prod environment
-        run: terraform -auto-approve
+        run: terraform apply -auto-approve
         working-directory: terraform/auto/dev
         env:
-          TF_VAR_rails_env: env.RAILS_ENV
-          TF_VAR_db_user: env.DB_USER
-          TF_VAR_db_password: env.DB_PASSWORD
-          TF_VAR_db_port: env.DB_PORT
-          TF_VAR_db_host: env.DB_HOST
-          TF_VAR_db_name: env.DB_NAME
+          TF_VAR_rails_env: ${{ env.RAILS_ENV }}
+          TF_VAR_rails_master_key: ${{ env.RAILS_MASTER_KEY }}
+          TF_VAR_db_user: ${{ env.DB_USER }}
+          TF_VAR_db_password: ${{ env.DB_PASSWORD }}
+          TF_VAR_db_port: ${{ env.DB_PORT }}
+          TF_VAR_db_host: ${{ env.DB_HOST }}
+          TF_VAR_db_name: ${{ env.DB_NAME }}
