@@ -28,7 +28,7 @@ variable "tags" {
   type    = map(string)
   default = {
     team                = "devops"
-    repository          = "maks_new_challenge"
+    repository          = "corpay_interview_assignment"
     terraform_managed   = "true"
   }
 }
